@@ -1,0 +1,43 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="au.gov.nla.domain">
+
+	<class name="Book" table="t_Book">
+          <id name="barcode" type="string" length="20">
+            <generator class="assigned"/>
+          </id>
+          <property
+            name="bookName"
+            column="bookName"
+            type="string"
+            length="20"
+          />
+          <many-to-one name="bookType"
+            column="bookType"
+            class="BookType"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+          
+          <property
+            name="price"
+            column="price"
+            type="java.lang.Float"
+          />
+          <property
+            name="count"
+            column="count"
+            type="java.lang.Integer"
+          />
+          <property
+            name="author"
+            column="author"
+            type="string"
+            length="20"
+          />
+	</class>
+</hibernate-mapping>
+ 
